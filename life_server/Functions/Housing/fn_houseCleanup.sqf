@@ -14,7 +14,8 @@ private _containers = [_query,2,true] call DB_fnc_asyncCall;
 
 {
     _x params ["_pos"];
+    private _pos = if (_pos isEqualType "") then {call compile _pos} else {_pos};
     {
         deleteVehicle _x;
-    } forEach (nearestObjects[_pos,["Box_IND_Grenades_F","B_supplyCrate_F"],12]);
+    } forEach (nearestObjects[_pos, ["Box_IND_Grenades_F","B_supplyCrate_F"], 12]);
 } forEach _containers;
